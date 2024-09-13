@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>CheerpJ test</title>
+        <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
+    </head>
+    <body>
+        <script>
+            (async function () {
+                await cheerpjInit();
+                const lib = await cheerpjRunLibrary("");
+
+                const System = await lib.java.lang.System;
+                await System.out.println("Hello from Java");
+                //     await cheerpjInit();
+                //     cheerpjCreateDisplay(800, 600);
+                //     await cheerpjRunJar("/app/Qango.jar");
+            })();
+        </script>
+    </body>
+</html>
