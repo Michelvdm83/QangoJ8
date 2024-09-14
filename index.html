@@ -51,7 +51,8 @@
                     },
                 });
                 cheerpjCreateDisplay(800, 600);
-                await cheerpjRunJar("/app/Qango.jar");
+                // await cheerpjRunJar("/app/Qango.jar");
+                await cheerpjRunMain("qango.QangoTUI", "/app/Qango.jar");
             })();
             //cheerpjInit({ preloadResources: {"/lts/file1.jar":[int, int, ...], "/lts/file2.jar":[int,int, ...]} });
         </script>
