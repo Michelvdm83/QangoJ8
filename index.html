@@ -8,14 +8,14 @@
     <body>
         <script>
             (async function () {
-                await cheerpjInit();
-                const lib = await cheerpjRunLibrary("");
-
-                const System = await lib.java.lang.System;
-                await System.out.println("Hello from Java");
                 //     await cheerpjInit();
-                //     cheerpjCreateDisplay(800, 600);
-                //     await cheerpjRunJar("/app/Qango.jar");
+                //     const lib = await cheerpjRunLibrary("");
+
+                //     const System = await lib.java.lang.System;
+                //     await System.out.println("Hello from Java");
+                await cheerpjInit();
+                cheerpjCreateDisplay(800, 600);
+                await cheerpjRunJar("/app/Qango.jar");
             })();
         </script>
     </body>
