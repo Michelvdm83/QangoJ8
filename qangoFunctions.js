@@ -32,12 +32,12 @@ async function occupySquare(row, column) {
     await board.placePlayer(player1, c1);
 }
 
-function onClick(event) {
+async function onClick(event) {
     const id = event.target.id;
     console.log(id);
     const row = new Number(id[1]);
     const column = new Number(id[3]);
-    occupySquare(row - 1, column - 1);
+    await occupySquare(row - 1, column - 1);
     //drawBoard();
 }
 
