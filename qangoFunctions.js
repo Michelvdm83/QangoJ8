@@ -30,7 +30,7 @@ async function occupySquare(row, column) {
     console.log("occupied");
     const c1 = await new Coordinate(new Number(row), new Number(column));
     await board.placePlayer(player1, c1);
-    await drawBoard();
+    drawBoard();
 }
 
 async function drawBoard() {
