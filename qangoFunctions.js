@@ -48,9 +48,6 @@ async function drawBoard() {
                 const newSquare = new String(square);
                 if (newSquare.length > 1) {
                     const currentSquare = document.createElement("div");
-                    currentSquare.onclick = () =>
-                        currentSquare.onclick = "";
-                        occupySquare(row - 1, column - 1);
                     // currentSquare.onmouseover = () => {
                     //     currentSquare.style.borderRadius = "50%";
                     // };
@@ -72,6 +69,9 @@ async function drawBoard() {
                         currentText.style.width = "50%";
                         currentText.style.margin = "25%";
                         currentSquare.appendChild(currentText);
+                    } else {
+                        currentSquare.onclick = () =>
+                        occupySquare(row - 1, column - 1);
                     }
                     currentSquare.style.gridRow = row;
                     currentSquare.style.gridColumn = column;
