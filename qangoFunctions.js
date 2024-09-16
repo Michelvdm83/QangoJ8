@@ -19,7 +19,7 @@ async function setup() {
     player1 = await players.PLAYER1;
     player2 = await players.PLAYER2;
 
-    // Coordinate = await lib.qango.Coordinate;
+    Coordinate = await lib.qango.Coordinate;
     // const c1 = await new Coordinate(1, 1);
     // await board.placePlayer(player1, c1);
 
@@ -50,9 +50,9 @@ async function drawBoard() {
                     const currentSquare = document.createElement("div");
                     currentSquare.onclick = () =>
                         occupySquare(row - 1, column - 1);
-                    currentSquare.onmouseover = () => {
-                        currentSquare.style.borderRadius = "50%";
-                    };
+                    // currentSquare.onmouseover = () => {
+                    //     currentSquare.style.borderRadius = "50%";
+                    // };
                     console.log("colors: ", square.split(";"));
                     const colors = square.split(";");
                     const r = colors[2];
