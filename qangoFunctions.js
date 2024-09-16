@@ -28,7 +28,7 @@ async function setup() {
 
 async function occupySquare(row, column) {
     console.log("occupied");
-    const c1 = await new Coordinate(row, column);
+    const c1 = await new Coordinate(new Number(row), new Numbeer(column));
     await board.placePlayer(player1, c1);
     await drawBoard();
 }
