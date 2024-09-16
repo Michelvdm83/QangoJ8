@@ -32,6 +32,17 @@ async function occupySquare(row, column) {
     await board.placePlayer(player1, c1);
 }
 
+function onClick(event) {
+    const id = event.target.id;
+    console.log(id);
+    const row = new Number(id[1]);
+    const column = new Number(id[3]);
+    event.target.removeEventListener("click", onClick);
+    occupySquare(row - 1, column - 1).then(() => {
+        drawBoard();
+    });
+}
+
 async function drawBoard() {
     boardUI.replaceChildren();
     const current = await board.toString();
@@ -69,11 +80,11 @@ async function drawBoard() {
                         currentText.style.margin = "25%";
                         currentSquare.appendChild(currentText);
                     } else {
-                        currentSquare.onclick = () =>
-                        occupySquare(row - 1, column - 1).then(() => drawBoard());
+                        currentSquare.addEventListener("click", onClick);
                     }
                     currentSquare.style.gridRow = row;
                     currentSquare.style.gridColumn = column;
+                    currentSquare.id = `r${row}c${column}`;
 
                     boardUI.appendChild(currentSquare);
 
