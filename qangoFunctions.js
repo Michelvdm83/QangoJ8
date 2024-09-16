@@ -38,9 +38,8 @@ function onClick(event) {
     const row = new Number(id[1]);
     const column = new Number(id[3]);
     event.target.removeEventListener("click", onClick);
-    occupySquare(row - 1, column - 1).then(() => {
-        drawBoard();
-    });
+    occupySquare(row - 1, column - 1);
+    drawBoard();
 }
 
 async function drawBoard() {
