@@ -11,7 +11,7 @@ async function firstLoad() {
 
 async function setup() {
     await cheerpjInit();
-    lib = await cheerpjRunLibrary("/app/Qango.jar");
+    lib = await cheerpjRunLibrary("/app/QangoJ8/Qango.jar");
     const Qango6Board = await lib.qango.Qango6Board;
     board = await new Qango6Board();
 
