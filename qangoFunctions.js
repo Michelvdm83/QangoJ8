@@ -49,6 +49,7 @@ async function drawBoard() {
                 if (newSquare.length > 1) {
                     const currentSquare = document.createElement("div");
                     currentSquare.onclick = () =>
+                        currentSquare.onclick = "";
                         occupySquare(row - 1, column - 1);
                     // currentSquare.onmouseover = () => {
                     //     currentSquare.style.borderRadius = "50%";
