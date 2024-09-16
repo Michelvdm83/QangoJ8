@@ -38,7 +38,7 @@ function onClick(event) {
     const row = new Number(id[1]);
     const column = new Number(id[3]);
     occupySquare(row - 1, column - 1);
-    drawBoard();
+    //drawBoard();
 }
 
 async function drawBoard() {
