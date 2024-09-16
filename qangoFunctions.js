@@ -29,15 +29,16 @@ async function setup() {
 async function occupySquare(row, column) {
     console.log("occupied");
     const c1 = await new Coordinate(new Number(row), new Number(column));
+    console.log(c1);
     await board.placePlayer(player1, c1);
 }
 
-function onClick(event) {
+async function onClick(event) {
     const id = event.target.id;
     console.log(id);
     const row = new Number(id[1]);
     const column = new Number(id[3]);
-    occupySquare(row - 1, column - 1);
+    await occupySquare(row - 1, column - 1);
 }
 
 async function drawBoard() {
