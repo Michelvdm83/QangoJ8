@@ -42,7 +42,19 @@ async function onClick(event) {
     const row = new Number(id[1]);
     const column = new Number(id[3]);
     await occupySquare(row - 1, column - 1);
-    drawBoard();
+
+    console.log("check2");
+    const r = 0;
+    const g = 0;
+    const b = 0;
+    const currentText = document.createElement("div");
+    currentText.style.borderRadius = "50%";
+    currentText.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    currentText.style.height = "50%";
+    currentText.style.width = "50%";
+    currentText.style.margin = "25%";
+    event.target.appendChild(currentText);
+    event.target.removeEventListener("click", onClick);
 }
 
 async function drawBoard() {
