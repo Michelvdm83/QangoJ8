@@ -3,61 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <title>CheerpJ test</title>
+        <link rel="stylesheet" href="styles.css" />
         <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
     </head>
+    <script>
+        window.onload = () => firstLoad();
+    </script>
     <body>
-        <script type="module" crossorigin="anonymous">
-            (async function () {
-                //     await cheerpjInit();
-                //     const lib = await cheerpjRunLibrary("");
-
-                //     const System = await lib.java.lang.System;
-                //     await System.out.println("Hello from Java");
-                await cheerpjInit({
-                    preloadResources: {
-                        "/lt/8/jre/lib/rt.jar": [
-                            0, 131072, 10092544, 10223616, 10354688, 10878976,
-                            11272192, 11534336, 11796480, 12058624, 12320768,
-                            12451840, 15204352, 15335424, 15466496, 15597568,
-                            17694720, 17825792, 18350080, 18481152, 20709376,
-                            20840448, 21364736, 21495808, 21626880, 21757952,
-                            22020096, 22806528, 22937600, 23068672, 23199744,
-                            23461888, 23592960, 26869760,
-                        ],
-                        "/lt/8/jre/lib/cheerpj-awt.jar": [0, 131072],
-                        "/lt/etc/passwd": [0, 131072],
-                        "/lt/etc/localtime": [],
-                        "/lt/8/ext/meta-index": [0, 131072],
-                        "/lt/8/ext": [],
-                        "/lt/8/ext/index.list": [],
-                        "/lt/8/ext/sunjce_provider.jar": [],
-                        "/lt/8/jre/lib/jsse.jar": [0, 131072, 786432, 917504],
-                        "/lt/8/jre/lib/jce.jar": [0, 131072],
-                        "/lt/8/jre/lib/charsets.jar": [
-                            0, 131072, 1703936, 1835008,
-                        ],
-                        "/lt/8/jre/lib/resources.jar": [
-                            0, 131072, 917504, 1179648,
-                        ],
-                        "/lt/8/jre/lib/javaws.jar": [
-                            0, 131072, 1441792, 1703936,
-                        ],
-                        "/lt/8/lib/ext/localedata.jar": [],
-                        "/lt/8/jre/lib/meta-index": [0, 131072],
-                        "/lt/8/jre/lib": [],
-                        "/lt/8/lib/currency.data": [0, 131072],
-                        "/lt/8/lib/currency.properties": [],
-                        "/lt/8/lib/accessibility.properties": [],
-                    },
-                });
-                cheerpjCreateDisplay(800, 600);
-                // await cheerpjRunJar("/app/Qango.jar");
-                await cheerpjRunMain(
-                    "qango.QangoTUI",
-                    "/app/QangoJ8/Qango.jar"
-                );
-            })();
-            //cheerpjInit({ preloadResources: {"/lts/file1.jar":[int, int, ...], "/lts/file2.jar":[int,int, ...]} });
-        </script>
+        <div id="board" class="board"></div>
+        <script src="./qangoFunctions.js"></script>
     </body>
 </html>
