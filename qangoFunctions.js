@@ -30,7 +30,6 @@ async function occupySquare(row, column) {
     console.log("occupied");
     const c1 = await new Coordinate(new Number(row), new Number(column));
     await board.placePlayer(player1, c1);
-    drawBoard();
 }
 
 async function drawBoard() {
@@ -71,7 +70,7 @@ async function drawBoard() {
                         currentSquare.appendChild(currentText);
                     } else {
                         currentSquare.onclick = () =>
-                        occupySquare(row - 1, column - 1);
+                        occupySquare(row - 1, column - 1).then(() => drawBoard());
                     }
                     currentSquare.style.gridRow = row;
                     currentSquare.style.gridColumn = column;
