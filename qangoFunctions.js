@@ -26,14 +26,15 @@ async function setup() {
     await drawBoard();
 }
 
-// async function occupySquare(row, column) {
-//     const c1 = await new Coordinate(row, column);
-//     await board.placePlayer(player1, c1);
-//     await drawBoard();
-// }
+async function occupySquare(row, column) {
+    console.log("occupied");
+    const c1 = await new Coordinate(row, column);
+    await board.placePlayer(player1, c1);
+    await drawBoard();
+}
 
 async function drawBoard() {
-    // boardUI.replaceChildren();
+    boardUI.replaceChildren();
     const current = await board.toString();
     console.log(current);
     let row = 1;
@@ -47,11 +48,12 @@ async function drawBoard() {
                 const newSquare = new String(square);
                 if (newSquare.length > 1) {
                     const currentSquare = document.createElement("div");
-                    // currentSquare.onclick = () =>
-                    //     async function () {
-                    //         await occupySquare(row - 1, column - 1);
-                    //     };
-                    // console.log("colors: ", square.split(";"));
+                    currentSquare.onclick = () =>
+                        occupySquare(row - 1, column - 1);
+                    currentSquare.onmouseover = () => {
+                        currentSquare.style.borderRadius = "50%";
+                    };
+                    console.log("colors: ", square.split(";"));
                     const colors = square.split(";");
                     const r = colors[2];
                     const g = colors[3];
