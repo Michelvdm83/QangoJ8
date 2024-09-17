@@ -4,6 +4,9 @@ let board;
 let Coordinate;
 let player1;
 let player2;
+let currentPlayer = 1;
+let winner = "";
+let draw = false;
 
 async function firstLoad() {
     await setup();
@@ -33,7 +36,16 @@ async function occupySquare(row, column) {
         new Number(column).valueOf()
     );
     console.log(c1);
-    await board.placePlayer(player1, c1);
+    await board.placePlayer(currentPlayer === 1 ? player1 : player2, c1);
+    if (await board.playerWon(currentPlayer === 1 ? player1 : player2, c1)) {
+        winner = currentPlayer === 1 ? "player1" : "player2";
+    } else {
+        const freeLocations = await board.freeLocations();
+        if (freeLocations.length < 1) {
+            draw = true;
+        }
+    }
+    // (!(board.playerWon(currentPlayer, lastMove) || board.freeLocations().isEmpty()));
 }
 
 async function onClick(event) {
@@ -44,17 +56,26 @@ async function onClick(event) {
     await occupySquare(row - 1, column - 1);
 
     console.log("check2");
-    const r = 0;
-    const g = 0;
-    const b = 0;
+    const r = currentPlayer === 1 ? 255 : 0;
+    const g = currentPlayer === 1 ? 255 : 0;
+    const b = currentPlayer === 1 ? 255 : 0;
     const currentText = document.createElement("div");
     currentText.style.borderRadius = "50%";
     currentText.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
     currentText.style.height = "50%";
     currentText.style.width = "50%";
     currentText.style.margin = "25%";
+    currentPlayer = currentPlayer === 1 ? 2 : 1;
     event.target.appendChild(currentText);
     event.target.removeEventListener("click", onClick);
+
+    //needs to add div to body showing result if 1 of these happens (+ button for replay?)
+    if (winner.length > 0) {
+        console.log("winner: " + winner);
+        //remove all remaining listeners
+    } else if (draw) {
+        console.log("It's a draw");
+    }
 }
 
 async function drawBoard() {
