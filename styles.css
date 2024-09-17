@@ -8,7 +8,7 @@ body {
 .communicationWrapper {
     display: flex;
     justify-content: space-between;
-    width: 700px;
+    width: 600px;
 }
 
 .board {
