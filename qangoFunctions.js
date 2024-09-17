@@ -45,7 +45,7 @@ async function occupySquare(row, column) {
         const freeLocations = await board.freeLocations();
         console.log("free");
         console.log(freeLocations);
-        if (freeLocations) {
+        if (freeLocations.isEmpty()) {
             draw = true;
         }
     }
