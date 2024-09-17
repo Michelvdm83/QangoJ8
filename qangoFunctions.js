@@ -42,7 +42,9 @@ async function occupySquare(row, column) {
     if (await board.playerWon(currentPlayer === 1 ? player1 : player2, c1)) {
         winner = currentPlayer === 1 ? "player1" : "player2";
     } else {
-        const freeLocations = await board.freeLocations().isEmpty();
+        const freeLocations = await board.freeLocations();
+        console.log("free");
+        console.log(freeLocations);
         if (freeLocations) {
             draw = true;
         }
