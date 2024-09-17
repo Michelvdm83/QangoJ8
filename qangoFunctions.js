@@ -1,10 +1,12 @@
 let boardUI = document.getElementById("board");
+let communicationHeader = document.getElementById("communication");
 let lib;
 let board;
 let Coordinate;
 let player1;
 let player2;
 let currentPlayer = 1;
+let currentPlayerText = `It's player${currentPlayer}'s turn`;
 let winner = "";
 let draw = false;
 
@@ -27,6 +29,7 @@ async function setup() {
     // await board.placePlayer(player1, c1);
 
     await drawBoard();
+    communicationHeader.innerText = currentPlayerText;
 }
 
 async function occupySquare(row, column) {
@@ -65,16 +68,21 @@ async function onClick(event) {
     currentText.style.height = "50%";
     currentText.style.width = "50%";
     currentText.style.margin = "25%";
+
     currentPlayer = currentPlayer === 1 ? 2 : 1;
+    communicationHeader.innerText = currentPlayerText;
     event.target.appendChild(currentText);
     event.target.removeEventListener("click", onClick);
 
     //needs to add div to body showing result if 1 of these happens (+ button for replay?)
     if (winner.length > 0) {
         console.log("winner: " + winner);
-        //remove all remaining listeners
+        boardUI.children.forEach((gridItem) => {
+            gridItem.removeEventListener("click", onClick);
+        });
+        communicationHeader.innerText = `The winner is: ${winner}`;
     } else if (draw) {
-        console.log("It's a draw");
+        communicationHeader.innerText = "It's a Draw";
     }
 }
 
