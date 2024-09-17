@@ -82,7 +82,7 @@ async function onClick(event) {
             boardUI.children[i].removeEventListener("click", onClick);
         }
         communicationHeader.innerText = `The winner is: ${winner}`;
-    } else if (draw) {
+    } else if (draw === true) {
         communicationHeader.innerText = "It's a Draw";
     }
 }
