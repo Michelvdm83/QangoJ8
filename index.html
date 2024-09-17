@@ -10,7 +10,10 @@
         window.onload = () => firstLoad();
     </script>
     <body>
-        <h1 id="communication"></h1>
+        <div id="communicationWrapper" class="communicationWrapper">
+            <h1 id="communication"></h1>
+            <button onclick="restart()">Restart</button>
+        </div>
         <div id="board" class="board"></div>
     </body>
     <script src="./qangoFunctions.js"></script>
