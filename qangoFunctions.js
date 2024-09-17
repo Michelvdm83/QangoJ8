@@ -6,7 +6,6 @@ let Coordinate;
 let player1;
 let player2;
 let currentPlayer = 1;
-let currentPlayerText = `It's player${currentPlayer}'s turn`;
 let winner = "";
 let draw = false;
 
@@ -29,7 +28,7 @@ async function setup() {
     // await board.placePlayer(player1, c1);
 
     await drawBoard();
-    communicationHeader.innerText = currentPlayerText;
+    communicationHeader.innerText = `It's player${currentPlayer}'s turn`;
 }
 
 async function occupySquare(row, column) {
@@ -43,8 +42,8 @@ async function occupySquare(row, column) {
     if (await board.playerWon(currentPlayer === 1 ? player1 : player2, c1)) {
         winner = currentPlayer === 1 ? "player1" : "player2";
     } else {
-        const freeLocations = await board.freeLocations();
-        if (freeLocations.length < 1) {
+        const freeLocations = await board.freeLocations().isEmpty();
+        if (freeLocations) {
             draw = true;
         }
     }
@@ -58,10 +57,10 @@ async function onClick(event) {
     const column = new Number(id[3]);
     await occupySquare(row - 1, column - 1);
 
-    console.log("check2");
-    const r = currentPlayer === 1 ? 255 : 0;
-    const g = currentPlayer === 1 ? 255 : 0;
-    const b = currentPlayer === 1 ? 255 : 0;
+    const rgbValue = currentPlayer === 1 ? 255 : 0;
+    const r = rgbValue;
+    const g = rgbValue;
+    const b = rgbValue;
     const currentText = document.createElement("div");
     currentText.style.borderRadius = "50%";
     currentText.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
@@ -70,16 +69,16 @@ async function onClick(event) {
     currentText.style.margin = "25%";
 
     currentPlayer = currentPlayer === 1 ? 2 : 1;
-    communicationHeader.innerText = currentPlayerText;
+    communicationHeader.innerText = `It's player${currentPlayer}'s turn`;
     event.target.appendChild(currentText);
     event.target.removeEventListener("click", onClick);
 
     //needs to add div to body showing result if 1 of these happens (+ button for replay?)
     if (winner.length > 0) {
         console.log("winner: " + winner);
-        boardUI.children.forEach((gridItem) => {
-            gridItem.removeEventListener("click", onClick);
-        });
+        for (let i = 0; i < boardUI.children.length; i++) {
+            boardUI.children[i].removeEventListener("click", onClick);
+        }
         communicationHeader.innerText = `The winner is: ${winner}`;
     } else if (draw) {
         communicationHeader.innerText = "It's a Draw";
