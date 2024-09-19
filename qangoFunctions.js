@@ -32,6 +32,9 @@ async function setup() {
 async function restart() {
     await board.emptyBoard();
     await drawBoard();
+    winner = "";
+    draw = false;
+    updateCommunication();
 }
 
 async function occupySquare(row, column) {
@@ -69,10 +72,13 @@ async function onClick(event) {
     currentText.style.margin = "25%";
 
     currentPlayer = currentPlayer === 1 ? 2 : 1;
-    communicationHeader.innerText = `It's player${currentPlayer}'s turn`;
     event.target.appendChild(currentText);
     event.target.removeEventListener("click", onClick);
 
+    updateCommunication();
+}
+
+function updateCommunication() {
     if (winner.length > 0) {
         for (let i = 0; i < boardUI.children.length; i++) {
             boardUI.children[i].removeEventListener("click", onClick);
@@ -80,6 +86,8 @@ async function onClick(event) {
         communicationHeader.innerText = `The winner is: ${winner}`;
     } else if (draw === true) {
         communicationHeader.innerText = "It's a Draw";
+    } else {
+        communicationHeader.innerText = `It's player${currentPlayer}'s turn`;
     }
 }
 
