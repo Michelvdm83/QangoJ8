@@ -1,6 +1,8 @@
 :root {
     --squarePreviewColor: white;
-    --squareSide: min(10vh-0, 10vw-0);
+    --vHeight: 10vh;
+    --vWidth: 10vw;
+    --squareSide: min(var(--vHeight), var(--vWidth));
 }
 
 body {
