@@ -13,6 +13,14 @@ body {
     width: 100vw;
 }
 
+.game-wrapper {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .restart-button {
     background-color: chocolate;
     border-radius: 20%;
