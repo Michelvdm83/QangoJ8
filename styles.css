@@ -18,7 +18,7 @@ body {
     border-radius: 20%;
     width: fit-content;
     height: fit-content;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .communicationWrapper {
@@ -26,6 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: calc(6 * var(--squareSide));
+    height: 10vmin;
 }
 
 .board {
