@@ -79,6 +79,7 @@ async function onClick(event) {
     );
     event.target.appendChild(currentText);
     event.target.removeEventListener("click", onClick);
+    event.target.className = "";
 
     updateCommunication();
 }

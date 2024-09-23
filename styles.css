@@ -24,7 +24,7 @@ body {
 .boardSquare:hover {
     background-image: radial-gradient(
         circle,
-        var(--squarePreviewColor) 50%,
-        rgba(0, 0, 0, 0) 40%
+        var(--squarePreviewColor) 40%,
+        rgba(0, 0, 0, 0) 10%
     );
 }
