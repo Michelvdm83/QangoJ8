@@ -5,6 +5,11 @@ let board;
 let Coordinate;
 let player1;
 let player2;
+const players = new Map([
+    [1, "Player1"],
+    [2, "Player2"],
+]);
+
 let currentPlayer = 1;
 let winner = "";
 let draw = false;
@@ -26,7 +31,7 @@ async function setup() {
     Coordinate = await lib.qango.Coordinate;
 
     await drawBoard();
-    communicationHeader.innerText = `Welcome to Qango! player${currentPlayer} starts`;
+    communicationHeader.innerText = `${players.get(currentPlayer)} starts`;
 }
 
 async function restart() {
@@ -45,7 +50,7 @@ async function occupySquare(row, column) {
 
     await board.placePlayer(currentPlayer === 1 ? player1 : player2, c1);
     if (await board.playerWon(currentPlayer === 1 ? player1 : player2, c1)) {
-        winner = currentPlayer === 1 ? "player1" : "player2";
+        winner = players.get(currentPlayer);
     } else {
         const freeLocations = await board.freeLocations();
         if (await freeLocations.isEmpty()) {
@@ -100,7 +105,9 @@ function updateCommunication() {
     } else if (draw === true) {
         communicationHeader.innerText = "It's a Draw";
     } else {
-        communicationHeader.innerText = `It's player${currentPlayer}'s turn`;
+        communicationHeader.innerText = `It's ${players.get(
+            currentPlayer
+        )}'s turn`;
     }
 }
 
