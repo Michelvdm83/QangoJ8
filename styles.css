@@ -26,16 +26,16 @@ body {
     border-radius: 20%;
     width: fit-content;
     height: fit-content;
-    padding: 0.5rem 1rem;
+    padding: 0.5vmin 1vmin;
 }
 
 .communicationWrapper {
-    margin-top: 1%;
+    margin-top: 1vmin;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: calc(6 * var(--squareSide));
-    height: 10vmin;
+    height: 9vmin;
 }
 
 .board {
