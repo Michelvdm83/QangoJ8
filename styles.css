@@ -1,5 +1,6 @@
 :root {
     --squarePreviewColor: white;
+    --squareSide: min(10vh, 10vw);
 }
 
 body {
@@ -7,6 +8,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 .communicationWrapper {
@@ -17,8 +20,8 @@ body {
 
 .board {
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
-    grid-template-rows: 100px 100px 100px 100px 100px 100px 100px;
+    grid-template-columns: repeat(var(--squareSide), 6);
+    grid-template-rows: repeat(var(--squareSide), 6);
 }
 
 .boardSquare:hover {
