@@ -94,6 +94,7 @@ function updateCommunication() {
     if (winner.length > 0) {
         for (let i = 0; i < boardUI.children.length; i++) {
             boardUI.children[i].removeEventListener("click", onClick);
+            boardUI.children[i].className = "";
         }
         communicationHeader.innerText = `The winner is: ${winner}`;
     } else if (draw === true) {
