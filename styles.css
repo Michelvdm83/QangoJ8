@@ -22,6 +22,8 @@ body {
     display: grid;
     grid-template-columns: repeat(var(--squareSide), 6);
     grid-template-rows: repeat(var(--squareSide), 6);
+    height: 100%;
+    width: 100%;
 }
 
 .boardSquare:hover {
