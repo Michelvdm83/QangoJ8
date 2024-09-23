@@ -1,3 +1,7 @@
+:root {
+    --squarePreviewColor: white;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -15,4 +19,12 @@ body {
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
     grid-template-rows: 100px 100px 100px 100px 100px 100px 100px;
+}
+
+.boardSquare:hover {
+    background-image: radial-gradient(
+        circle,
+        var(--squarePreviewColor) 50%,
+        rgba(0, 0, 0, 0) 40%
+    );
 }

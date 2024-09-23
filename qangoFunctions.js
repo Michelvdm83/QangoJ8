@@ -72,6 +72,10 @@ async function onClick(event) {
     currentText.style.margin = "25%";
 
     currentPlayer = currentPlayer === 1 ? 2 : 1;
+    const currentColor = currentPlayer === 1 ? "white" : "black";
+    document.documentElement.style.setProperty("--squarePreviewColor", {
+        currentColor,
+    });
     event.target.appendChild(currentText);
     event.target.removeEventListener("click", onClick);
 
@@ -104,6 +108,7 @@ async function drawBoard() {
                 const newSquare = new String(square);
                 if (newSquare.length > 1) {
                     const currentSquare = document.createElement("div");
+                    currentSquare.className = "boardSquare";
                     const colors = square.split(";");
                     const r = colors[2];
                     const g = colors[3];
