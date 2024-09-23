@@ -1,5 +1,6 @@
 :root {
     --squarePreviewColor: white;
+    --squareSide: 10vmin;
 }
 
 body {
@@ -14,13 +15,13 @@ body {
 .communicationWrapper {
     display: flex;
     justify-content: space-between;
-    width: calc(6 * 10vmin);
+    width: calc(6 * var(--squareSide));
 }
 
 .board {
     display: grid;
-    grid-template-columns: repeat(10vmin, 6);
-    grid-template-rows: repeat(10vmin, 6);
+    grid-template-columns: repeat(6, var(--squareSide));
+    grid-template-rows: repeat(6, var(--squareSide));
 }
 
 .boardContainer {
