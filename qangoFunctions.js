@@ -72,10 +72,11 @@ async function onClick(event) {
     currentText.style.margin = "25%";
 
     currentPlayer = currentPlayer === 1 ? 2 : 1;
-    const currentColor = currentPlayer === 1 ? "white" : "black";
-    document.documentElement.style.setProperty("--squarePreviewColor", {
-        currentColor,
-    });
+    const currentColor = currentPlayer === 1 ? `white` : `black`;
+    document.documentElement.style.setProperty(
+        `--squarePreviewColor`,
+        `${currentColor}`
+    );
     event.target.appendChild(currentText);
     event.target.removeEventListener("click", onClick);
 
