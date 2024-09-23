@@ -13,6 +13,12 @@ body {
     width: 100vw;
 }
 
+.restart-button {
+    background-color: chocolate;
+    border-radius: 20%;
+    width: 20%;
+}
+
 .communicationWrapper {
     display: flex;
     justify-content: space-between;
