@@ -23,7 +23,7 @@ body {
 .communicationWrapper {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
     width: calc(6 * var(--squareSide));
 }
 
