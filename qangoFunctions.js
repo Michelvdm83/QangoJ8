@@ -77,7 +77,13 @@ async function onClick(event) {
         `--squarePreviewColor`,
         `${currentColor}`
     );
-    event.target.appendChild(currentText);
+    // event.target.appendChild(currentText);
+
+    event.target.style.backgroundImage = `radial-gradient(
+        circle,
+        rgb(${r}, ${g}, ${b}) 40%,
+        rgba(0, 0, 0, 0) 10%
+    )`;
     event.target.removeEventListener("click", onClick);
     event.target.className = "";
 
