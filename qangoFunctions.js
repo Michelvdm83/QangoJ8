@@ -69,12 +69,6 @@ async function onClick(event) {
     const r = rgbValue;
     const g = rgbValue;
     const b = rgbValue;
-    const currentText = document.createElement("div");
-    currentText.style.borderRadius = "50%";
-    currentText.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-    currentText.style.height = "50%";
-    currentText.style.width = "50%";
-    currentText.style.margin = "25%";
 
     currentPlayer = currentPlayer === 1 ? 2 : 1;
     const currentColor = currentPlayer === 1 ? `white` : `black`;
@@ -82,7 +76,6 @@ async function onClick(event) {
         `--squarePreviewColor`,
         `${currentColor}`
     );
-    // event.target.appendChild(currentText);
 
     event.target.style.backgroundImage = `radial-gradient(
         circle,
