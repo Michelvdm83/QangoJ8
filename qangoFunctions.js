@@ -109,10 +109,10 @@ function updateCommunication() {
 
 function toggleRules() {
     const rules = document.getElementById("rules-text");
-    if (rules.style.getPropertyValue("display") === "none") {
-        rules.style.setProperty("display", "block");
+    if (rules.style.display === "block") {
+        rules.style.display = "none";
     } else {
-        rules.style.setProperty("display", "none");
+        rules.style.display = "block";
     }
 }
 
