@@ -31,7 +31,8 @@ async function setup() {
     Coordinate = await lib.qango.Coordinate;
 
     await drawBoard();
-    communicationHeader.innerText = `Player1 starts`;
+    //communicationHeader.innerText = `Player1 starts`;
+    updateCommunication();
 }
 
 async function restart() {
