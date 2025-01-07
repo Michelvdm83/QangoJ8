@@ -13,7 +13,7 @@ body {
 
 .rules-button {
     border-radius: 20%;
-    width: fit-content;
+    width: 10em;
     height: fit-content;
     padding: 0.5vmin 1vmin;
 }
