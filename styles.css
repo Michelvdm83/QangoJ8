@@ -6,8 +6,7 @@
 body {
     display: flex;
     overflow: hidden;
-    /* justify-content: center;
-    align-items: center; */
+    align-items: flex-start;
     height: 100vh;
     width: 100vw;
 }
@@ -30,7 +29,7 @@ body {
     align-items: center;
     height: 100%;
     width: calc((100% - 90vmin) / 2);
-    gap: 1;
+    gap: 2;
 }
 
 .names-wrapper {
