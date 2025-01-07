@@ -18,12 +18,11 @@ body {
     width: fit-content;
     height: fit-content;
     padding: 0.5vmin 1vmin;
-    justify-self: flex-start;
-    align-self: flex-start;
 }
 
 .rules-text {
     display: none;
+    z-index: 999;
 }
 
 .rules-wrapper {
