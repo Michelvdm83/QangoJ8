@@ -27,7 +27,7 @@ body {
 .rules-wrapper {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
     height: 100%;
     width: calc((100% - 90vmin) / 2);
     gap: 1;
