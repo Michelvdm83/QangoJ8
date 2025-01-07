@@ -16,7 +16,15 @@ body {
     width: fit-content;
     height: fit-content;
     padding: 0.5vmin 1vmin;
+}
+
+.rules-button-div {
     margin-top: 1vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(6 * var(--squareSide));
+    height: 8vmin;
 }
 
 .rules-text {
