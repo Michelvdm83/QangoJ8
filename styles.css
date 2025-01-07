@@ -45,6 +45,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 0;
 }
 
 .restart-button {
@@ -61,7 +62,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: calc(6 * var(--squareSide));
-    height: 9vmin;
+    height: 8vmin;
 }
 
 .board {
