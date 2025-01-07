@@ -107,7 +107,9 @@ function updateCommunication() {
     }
 }
 
-function toggleRules() {
+function toggleRules(event) {
+    const buttonText = event.target.innerText;
+    console.log(buttonText);
     const rules = document.getElementById("rules-text");
     if (rules.style.display === "block") {
         rules.style.display = "none";
