@@ -37,7 +37,7 @@ body {
     align-items: center;
     height: 100%;
     width: calc((100% - 90vmin) / 2);
-    gap: 2;
+    margin-top: 0;
 }
 
 .names-wrapper {
