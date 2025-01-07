@@ -16,6 +16,8 @@ let draw = false;
 
 async function firstLoad() {
     await setup();
+    const rules = document.getElementById("rules-text");
+    rules.innerText = rulesText;
 }
 
 async function setup() {
@@ -105,6 +107,15 @@ function updateCommunication() {
     }
 }
 
+function toggleRules() {
+    const rules = document.getElementById("rules-text");
+    if (rules.style.display === "none") {
+        rules.style.display = "block";
+    } else {
+        rules.style.display = "none";
+    }
+}
+
 async function drawBoard() {
     boardUI.replaceChildren();
     const current = await board.toString();
@@ -141,3 +152,10 @@ async function drawBoard() {
         }
     });
 }
+
+const rulesText =
+    "De spelers zetten om de beurt een steen op het bord.\n" +
+    "Een speler wint indien hij met zijn kleur steen:\n" +
+    "Alle 3 de aangrenzende velden van 1 kleur bezet\n" +
+    "Of een vierkant van 2x2 maakt\n" +
+    "Of een rij van 5 maakt";
