@@ -22,15 +22,17 @@ body {
 
 .rules-text {
     display: none;
-    z-index: 999;
 }
 
 .rules-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    height: 100%;
     gap: 1;
+}
+
+.names-wrapper {
+    height: 100%;
 }
 
 .game-wrapper {
