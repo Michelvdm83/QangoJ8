@@ -13,7 +13,8 @@ body {
 
 .rules-button {
     border-radius: 20%;
-    width: 8em;
+    width: 50%;
+    max-width: 8em;
     height: fit-content;
     padding: 0.5vmin 1vmin;
 }
@@ -29,6 +30,8 @@ body {
 
 .rules-text {
     display: none;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .rules-wrapper {
