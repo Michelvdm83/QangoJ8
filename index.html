@@ -30,11 +30,22 @@
             </div>
         </div>
         <div class="names-wrapper">
+            <label for="player1Name">White Player:</label>
             <input
                 type="text"
                 maxlength="10"
                 value="Player1"
+                id="player1Name"
                 onchange="setPlayerName(1, event.target.value)"
+            />
+
+            <label for="player2Name">Black Player:</label>
+            <input
+                type="text"
+                maxlength="10"
+                value="Player2"
+                id="player2Name"
+                onchange="setPlayerName(2, event.target.value)"
             />
         </div>
     </body>

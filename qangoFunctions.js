@@ -22,6 +22,7 @@ async function firstLoad() {
 
 function setPlayerName(player, name) {
     players.set(player, name);
+    updateCommunication();
 }
 
 async function setup() {
