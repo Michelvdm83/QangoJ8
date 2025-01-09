@@ -20,6 +20,10 @@ async function firstLoad() {
     rules.innerText = rulesText;
 }
 
+function setPlayerName(player, name) {
+    players.set(player, name);
+}
+
 async function setup() {
     await cheerpjInit();
     lib = await cheerpjRunLibrary("/app/QangoJ8/Qango.jar");
