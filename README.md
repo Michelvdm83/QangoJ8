@@ -1,3 +1,4 @@
+currently landscape only
+
 # **Next steps:**
-    - playernames
-    - option to view rules
+    - responsive styling (css)
