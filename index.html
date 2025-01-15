@@ -2,21 +2,52 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>CheerpJ test</title>
+        <title>2-player Qango local</title>
+        <link rel="stylesheet" href="styles.css" />
         <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
     </head>
+    <script>
+        window.onload = () => firstLoad();
+    </script>
     <body>
-        <script>
-            (async function () {
-                //     await cheerpjInit();
-                //     const lib = await cheerpjRunLibrary("");
+        <div class="rules-wrapper">
+            <div class="rules-button-div">
+                <button class="rules-button" onclick="toggleRules(event)">
+                    show rules
+                </button>
+            </div>
+            <div class="rules-text" id="rules-text"></div>
+        </div>
+        <div class="game-wrapper">
+            <div id="communicationWrapper" class="communicationWrapper">
+                <h2 id="communication"></h2>
+                <button class="restart-button" onclick="restart()">
+                    Restart
+                </button>
+            </div>
+            <div class="boardContainer">
+                <div id="board" class="board"></div>
+            </div>
+        </div>
+        <div class="names-wrapper">
+            <label for="player1Name">White Player:</label>
+            <input
+                type="text"
+                maxlength="10"
+                value="Player1"
+                id="player1Name"
+                onchange="setPlayerName(1, event.target.value)"
+            />
 
-                //     const System = await lib.java.lang.System;
-                //     await System.out.println("Hello from Java");
-                await cheerpjInit();
-                cheerpjCreateDisplay(800, 600);
-                await cheerpjRunJar("./app/Qango.jar");
-            })();
-        </script>
+            <label for="player2Name">Black Player:</label>
+            <input
+                type="text"
+                maxlength="10"
+                value="Player2"
+                id="player2Name"
+                onchange="setPlayerName(2, event.target.value)"
+            />
+        </div>
     </body>
+    <script src="./qangoFunctions.js"></script>
 </html>

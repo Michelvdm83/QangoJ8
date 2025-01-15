@@ -1,0 +1,168 @@
+let boardUI = document.getElementById("board");
+let communicationHeader = document.getElementById("communication");
+let lib;
+let board;
+let Coordinate;
+let player1;
+let player2;
+const players = new Map([
+    [1, "Player1"],
+    [2, "Player2"],
+]);
+
+let currentPlayer = 1;
+let winner = "";
+let draw = false;
+
+async function firstLoad() {
+    await setup();
+    const rules = document.getElementById("rules-text");
+    rules.innerText = rulesText;
+}
+
+function setPlayerName(player, name) {
+    players.set(player, name);
+    updateCommunication();
+}
+
+async function setup() {
+    await cheerpjInit();
+    lib = await cheerpjRunLibrary("/app/QangoJ8/Qango.jar");
+    const Qango6Board = await lib.qango.Qango6Board;
+    board = await new Qango6Board();
+
+    const players = await lib.qango.Player;
+    player1 = await players.PLAYER1;
+    player2 = await players.PLAYER2;
+
+    Coordinate = await lib.qango.Coordinate;
+
+    await drawBoard();
+    //communicationHeader.innerText = `Player1 starts`;
+    updateCommunication();
+}
+
+async function restart() {
+    await board.emptyBoard();
+    await drawBoard();
+    winner = "";
+    draw = false;
+    updateCommunication();
+}
+
+async function occupySquare(row, column) {
+    const c1 = await new Coordinate(
+        new Number(row).valueOf(),
+        new Number(column).valueOf()
+    );
+
+    await board.placePlayer(currentPlayer === 1 ? player1 : player2, c1);
+    if (await board.playerWon(currentPlayer === 1 ? player1 : player2, c1)) {
+        winner = players.get(currentPlayer);
+    } else {
+        const freeLocations = await board.freeLocations();
+        if (await freeLocations.isEmpty()) {
+            draw = true;
+        }
+    }
+}
+
+async function onClick(event) {
+    const id = event.target.id;
+    const row = new Number(id[1]);
+    const column = new Number(id[3]);
+    await occupySquare(row - 1, column - 1);
+
+    const rgbValue = currentPlayer === 1 ? 255 : 0;
+    const r = rgbValue;
+    const g = rgbValue;
+    const b = rgbValue;
+
+    currentPlayer = currentPlayer === 1 ? 2 : 1;
+    const currentColor = currentPlayer === 1 ? `white` : `black`;
+    document.documentElement.style.setProperty(
+        `--squarePreviewColor`,
+        `${currentColor}`
+    );
+
+    event.target.style.backgroundImage = `radial-gradient(
+        circle,
+        rgb(${r}, ${g}, ${b}) 40%,
+        rgba(0, 0, 0, 0) 10%
+    )`;
+    event.target.removeEventListener("click", onClick);
+    event.target.className = "";
+
+    updateCommunication();
+}
+
+function updateCommunication() {
+    if (winner.length > 0) {
+        for (let i = 0; i < boardUI.children.length; i++) {
+            boardUI.children[i].removeEventListener("click", onClick);
+            boardUI.children[i].className = "";
+        }
+        communicationHeader.innerText = `The winner is: ${winner}`;
+    } else if (draw === true) {
+        communicationHeader.innerText = "It's a Draw";
+    } else {
+        communicationHeader.innerText = `It's ${players.get(
+            currentPlayer
+        )}'s turn`;
+    }
+}
+
+function toggleRules(event) {
+    const rules = document.getElementById("rules-text");
+    if (rules.style.display === "block") {
+        rules.style.display = "none";
+        event.target.innerText = "show rules";
+    } else {
+        rules.style.display = "block";
+        event.target.innerText = "hide rules";
+    }
+}
+
+async function drawBoard() {
+    boardUI.replaceChildren();
+    const current = await board.toString();
+    let row = 1;
+    let column = 1;
+
+    current.split("\n").forEach((element, index) => {
+        if (index > 0) {
+            const newElement = element.substring(2);
+            newElement.split("\x1B[0m").forEach((square) => {
+                const newSquare = new String(square);
+                if (newSquare.length > 1) {
+                    const currentSquare = document.createElement("div");
+                    currentSquare.className = "boardSquare";
+                    const colors = square.split(";");
+                    const r = colors[2];
+                    const g = colors[3];
+                    const b = colors[4].split("m")[0];
+                    currentSquare.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+                    currentSquare.addEventListener("click", onClick);
+
+                    currentSquare.style.gridRow = row;
+                    currentSquare.style.gridColumn = column;
+                    currentSquare.id = `r${row}c${column}`;
+
+                    boardUI.appendChild(currentSquare);
+
+                    column++;
+                }
+            });
+            row++;
+            column = 1;
+        }
+    });
+}
+
+const rulesText =
+    "De spelers zetten om de beurt een steen op het bord.\n" +
+    "Een speler wint indien hij met zijn kleur steen:\n" +
+    "Alle 3 de aangrenzende velden van 1 kleur bezet\n" +
+    "Of een vierkant van 2x2 maakt\n" +
+    "Of een rij van 5 maakt";
